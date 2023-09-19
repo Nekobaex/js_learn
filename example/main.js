@@ -1,4 +1,8 @@
-import pl from 'nodejs-polars'
-let s = pl.Series('a', [1, 2, 3, 1], pl.Int8)
+import polars from 'nodejs-polars'
+const {
+    pl,
+    DataType
+} = polars;
+let s = polars.Series('a', [1, 2, 3, 1]);
 
-console.log(s)
+console.log(DataType);

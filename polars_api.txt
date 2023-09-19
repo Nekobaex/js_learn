@@ -1,13 +1,27 @@
+[abc] 表示 abc 是属性, 而非方法
 
-[abc] 表示 abc 是变量, 而非方法
+DataType
+    数字
+        Int8,  Int16,  Int32,  Int64
+        UInt8, UInt16, UInt32, UInt64
+        Float64, Float32
+    
+    特殊值
+        Bool
+        Null    
+        Utf8
 
-Expr & Series & DataFrame
-    Expr & Series 
-        Expr
-        Series
-        
-    Series & DataFrame
-    DataFrame
+    结构
+        List
+        Struct
+
+    日期
+        Date
+        Datetime
+
+    特征值
+        Categorical
+
 
 
 Expr & Series & DataFrame 通用方法:
@@ -119,13 +133,19 @@ Series & DataFrame 通用方法:
         rechunk
         shrinkToFit
 
+Expr & DataFrame 通用方法:
+    extend
+    std
+    toString
+    var
+    where
+
 Expr 独有:
     aggGroups
     and
     backwardFill
     count
     exclude
-    extend
     fillNan
     first
     flatten
@@ -144,14 +164,8 @@ Expr 独有:
     repeatBy
     reverse
     sortBy
-    std
     suffix
-    toString
     upperBound
-    var
-    where
-
-
 
 Series 独有:
     属性
@@ -200,7 +214,6 @@ DataFrame 独有:
 
     Other
         drop
-        extend
         findIdxByName
         fold
         frameEqual
@@ -224,15 +237,11 @@ DataFrame 独有:
         row
         rows
         select
-        std
         toSeries
-        toString
         toStruct
         transpose
         unnest
-        var
         vstack
-        where
         withColumn
         withColumnRenamed
         withColumns

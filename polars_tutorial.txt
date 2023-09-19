@@ -1,11 +1,14 @@
 DataType
-
+    数据类型分类:
+        
 Series 
 
 DataFrame
 
 io
 
-Expr
+Expr & expr 函数组
 
 LazyDataFrame
+
+GroupBy
