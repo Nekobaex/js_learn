@@ -1,14 +1,35 @@
+polars 及子模块引入
+
 DataType
-    数据类型分类:
-        
+    数字
+    特殊值
+    结构
+    日期
+    特征
+
 Series 
+    初始化
+    访问
+        值
+        属性
+
+    插入
+    删除
+    修改
+    遍历
+    计算
 
 DataFrame
+    初始化
+        一般形式
+        Series 构成形式
+        Lazy 形式
+        io
+    访问
+    插入
+    删除
+    修改
 
-io
+Expr
+    初始化
 
-Expr & expr 函数组
-
-LazyDataFrame
-
-GroupBy

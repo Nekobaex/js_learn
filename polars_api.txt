@@ -19,9 +19,8 @@ DataType
         Date
         Datetime
 
-    特征值
+    特征
         Categorical
-
 
 
 Expr & Series & DataFrame 通用方法:
@@ -63,13 +62,14 @@ Expr & Series & DataFrame 通用方法:
             filter
             unique
 
-        
-        fillNull
-        shift
-        shiftAndFill
-        interpolate
+        填充
+            fillNull
+            shift
+            shiftAndFill
+            interpolate
 
-        alias | alias / rename | rename
+        别名
+            alias | alias / rename | rename
 
     结构更改
         explode
@@ -134,9 +134,7 @@ Series & DataFrame 通用方法:
         shrinkToFit
 
 Expr & DataFrame 通用方法:
-    extend
     std
-    toString
     var
     where
 
