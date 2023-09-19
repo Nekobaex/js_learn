@@ -7,21 +7,17 @@ DataType
         Float64, Float32
     
     特殊值
-        Bool
-        Null    
         Utf8
+        Bool
+        
+        Null
+        Date
+
+        Categorical
 
     结构
         List
         Struct
-
-    日期
-        Date
-        Datetime
-
-    特征
-        Categorical
-
 
 Expr & Series & DataFrame 通用方法:
     计算
