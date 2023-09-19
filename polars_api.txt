@@ -122,60 +122,35 @@ Series & DataFrame 通用方法:
 Expr 独有:
     aggGroups
     and
-    argMax
-    argMin
-    argSort
-    argUnique
-    as
     backwardFill
-    cast
     count
-    diff
-    dot
     exclude
     extend
-    extendConstant
     fillNan
     first
     flatten
     forwardFill
-    hash
-    inner
-    isFinite
-    isFirst
-    isIn
-    isInfinite
     isNan
     isNotNan
-    isNotNull
-    isNull
     keepName
-    kurtosis
     last
     list
     lowerBound
-    mode
     not
-    nUnique
     or
     over
     pow
     prefix
-    rank
-    reinterpret
     repeatBy
     reverse
-    skew
     sortBy
     std
     suffix
-    take
-    takeEvery
-    toJSON
     toString
     upperBound
     var
     where
+
 
 
 Series 独有:
@@ -184,54 +159,28 @@ Series 独有:
 
     Other
         append
-        argMax
-        argMin
-        argSort
         argTrue
-        argUnique
-        as
         bitand
         bitor
         bitxor
-        cast
         chunkLengths
         concat
-        diff
-        dot
-        extendConstant
         get
         getIndex
         hasValidity
-        hash
-        inner
         isBoolean
         isDateTime
-        isFinite
-        isFirst
         isFloat
-        isIn
-        isInfinite
-        isNotNull
-        isNull
         isNumeric
         isUtf8
-        kurtosis
         len
-        mode
-        nUnique
         peakMax
         peakMin
-        rank
-        reinterpret
         seriesEqual
         set
         setAtIdx
-        skew
-        take
-        takeEvery
         toArray
         toFrame
-        toJSON
         toObject
         toTypedArray
         valueCounts
