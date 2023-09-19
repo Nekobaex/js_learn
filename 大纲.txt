@@ -1,0 +1,30 @@
+md 教程:
+    js
+
+基础技术栈
+    语言: js, ts, html, css
+    后端: node, bun, deno
+    包管理: npm, pnpm, yarn
+    项目打包: webpack, rollup, vite
+    项目编译: babel
+    界面: vue, react, electron
+    数据库: Mongodb, Redis
+    
+拓展
+    数据结构
+    算法
+    设计模式
+    软件构架
+    项目管理
+    数据库原理
+    计算机网络
+    操作系统
+    平面设计
+    集群
+    docker
+    文档
+
+想法:
+    状态机 & 可视化编程 & blender 节点 & 平面设计 & 接口编程
+    
+

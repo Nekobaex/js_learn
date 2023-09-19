@@ -1,0 +1,304 @@
+
+[abc] 表示 abc 是变量, 而非方法
+
+Expr & Series & DataFrame
+    Expr & Series 
+        Expr
+        Series
+        
+    Series & DataFrame
+    DataFrame
+
+
+Expr & Series & DataFrame 通用方法:
+    计算
+        四则:
+            add / plus
+            sub / minus
+            mul / multipleBy
+            div / divideBy
+            rem / modulo
+
+        整体
+            sum
+            abs
+            clip
+
+        小数
+            ceil
+            floor
+            round
+
+        统计
+            max
+            min
+            mean
+            median
+            quantile
+    
+    判断
+        isDuplicated
+        isUnique
+
+    部分变更
+        筛选
+            sample
+            head
+            tail
+            slice
+            filter
+            unique
+
+        
+        fillNull
+        shift
+        shiftAndFill
+        interpolate
+
+        alias | alias / rename | rename
+
+    结构更改
+        explode
+        serialize
+        sort
+
+Expr & Series 通用方法:
+    属性
+        [date]
+        [lst] 
+        [str]
+        [struct]
+
+    累积
+        cumCount
+        cumMax
+        cumMin
+        cumProd
+        cumSum
+
+    卷积
+        rollingMax
+        rollingMean
+        rollingMedian
+        rollingMin
+        rollingQuantile
+        rollingSkew
+        rollingStd
+        rollingSum
+        rollingVar
+
+    比较
+        eq / equals
+        gt / greaterThan
+        gtEq / greaterThanEquals
+        lt / lessThan
+        ltEq / lessThanEquals
+        neq / notEquals
+
+Series & DataFrame 通用方法:
+    属性
+        nChunks
+        nullCount
+        [dtype] | [dtypes]
+
+    内置:
+        [inspect]
+        [iterator]
+
+    计算
+        describe
+
+    部分更改
+        dropNulls
+        
+        sample
+        unique
+
+    结构更改
+        clone
+        rechunk
+        shrinkToFit
+
+Expr 独有:
+    Other
+        aggGroups
+        and
+        argMax
+        argMin
+        argSort
+        argUnique
+        as
+        backwardFill
+        cast
+        count
+        diff
+        dot
+        exclude
+        extend
+        extendConstant
+        fillNan
+        first
+        flatten
+        forwardFill
+        hash
+        inner
+        isFinite
+        isFirst
+        isIn
+        isInfinite
+        isNan
+        isNotNan
+        isNotNull
+        isNull
+        isUnique
+        keepName
+        kurtosis
+        last
+        list
+        lowerBound
+        max
+        mean
+        median
+        min
+        mode
+        nUnique
+        not
+        or
+        over
+        pow
+        prefix
+        quantile
+        rank
+        reinterpret
+        repeatBy
+        reverse
+        serialize
+        shift
+        shiftAndFill
+        skew
+        slice
+        sort
+        sortBy
+        std
+        suffix
+        sum
+        tail
+        take
+        takeEvery
+        toJSON
+        toString
+        unique
+        upperBound
+        var
+        where
+
+Series 独有:
+    属性
+        [name]
+
+    Other
+        append
+        argMax
+        argMin
+        argSort
+        argTrue
+        argUnique
+        as
+        bitand
+        bitor
+        bitxor
+        cast
+        chunkLengths
+        concat
+        diff
+        dot
+        extendConstant
+        get
+        getIndex
+        hasValidity
+        hash
+        inner
+        isBoolean
+        isDateTime
+        isFinite
+        isFirst
+        isFloat
+        isIn
+        isInfinite
+        isNotNull
+        isNull
+        isNumeric
+        isUtf8
+        kurtosis
+        len
+        mode
+        nUnique
+        peakMax
+        peakMin
+        rank
+        reinterpret
+        seriesEqual
+        set
+        setAtIdx
+        skew
+        take
+        takeEvery
+        toArray
+        toFrame
+        toJSON
+        toObject
+        toTypedArray
+        valueCounts
+        values
+        zipWith
+
+DataFrame 独有:
+    IO
+        toJSON
+        toObject
+        toRecords
+        writeAvro
+        writeCSV
+        writeIPC
+        writeJSON
+        writeParquet
+
+    Other
+        drop
+        extend
+        findIdxByName
+        fold
+        frameEqual
+        getColumn
+        getColumns
+        groupBy
+        groupByDynamic
+        groupByRolling
+        hashRows
+        hstack
+        insertAtIdx
+        isEmpty
+        join
+        joinAsof
+        lazy
+        map
+        melt
+        partitionBy
+        pivot
+        replaceAtIdx
+        row
+        rows
+        select
+        std
+        toSeries
+        toString
+        toStruct
+        transpose
+        unnest
+        var
+        vstack
+        where
+        withColumn
+        withColumnRenamed
+        withColumns
+        withRowCount

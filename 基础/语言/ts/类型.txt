@@ -1,0 +1,233 @@
+位置
+    变量
+        let a: string = "hi"
+
+    参数
+        function foo(arg1: string) {}
+        
+    返回值
+        function foo(arg1): boolean {}
+
+类型断言
+    限制:
+        只能 向上或向下 断言,
+        而不能在其他方向上断言:
+            let foo = 123 as string
+
+        解决方法: (双重断言)
+            let foo = 123 as any as string
+    
+    方法1:
+        const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
+
+    方法2:
+        // 不兼容 tsx
+        const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
+
+非空类型断言
+    // 形式类似 ?.
+
+
+    // 保证 foo 不为空值(undefined, null)
+    foo!.toUpperCase()
+
+可能类型
+    ?: string
+        可能为 string ,也可能为 undefined
+
+    使用方法
+        一般方法: (根据原理)
+            function foo(arg?: string){
+                if (arg === undefined){
+                    do_1(arg)
+                }else{
+                    do_2(arg?.toUpperCase())
+                }
+            }
+
+        特殊方法: (ts 编译器自动识别)
+            function foo(arg?: string){
+                if(typeof arg === "undefined"){
+
+                }else{
+
+                }
+            }
+            // === 也可为 ==
+            // 也可以先判断 typeof arg === "string"
+
+只读
+    interface Person {
+        readonly name: string 
+    }
+
+    // 属性不可重写, 
+    // 但可修改值的内部
+
+索引签名
+    interface str {
+        [index: number]: string
+    }
+    let foo: str = ['hi', 'baex']
+    // 对索引部分 [index: number] 进行签名, 即 : string
+
+    防止索引被修改: (借用 readonly)
+        interface str {
+            readonly [index: number]: string
+        }
+        // 让 str 的 number 类型的索引不能被修改(包括字符串形式的数字)
+
+分类
+    原始
+        string
+        number
+        boolean
+
+        undefined
+        null
+
+        bigint
+        symbol
+
+        object
+            包括上面的所有类型,
+            也可详细定义内部: {x: number, y: string}
+
+        never
+            类似 rust, 表示该类型接收不到变量,
+            或前方报错, 提前终止
+
+        void
+            没有返回值, 默认情况下的空值
+
+        unknown
+            未知的值, 会提示你小心
+
+    任意
+        any
+        表示不用检查该类型
+        编译器无法推断的变量, 一般自动为 any
+
+    字面类型
+        原理:
+            // 可用作简化的 枚举
+            变量值只能为 对应字面值的类型
+
+            也可与其他非字面值类型组合
+
+        使用方法:
+            function foo(arg: "hi" | "fuck") {
+                console.log(arg)
+            }
+
+            function bar(arg: string | 0 | 1){
+                // ...
+            }
+    
+    泛型: (类似 rust)
+        function foo<T>(arg: T[]): T {}
+
+        联合限制
+            // 一个泛型默认代表一个类型
+            // 下面会报错
+            function foo<T>(arg1: T, arg2: T){}
+            foo(123, "hi)
+
+            // 可手动联合类型
+            // 下面成功
+            foo <number | string> (123, "hi")
+
+        接口泛型: (类型别名 type 也可以用)
+            声明
+                interface Person<T> {
+                    name: string,
+                    favorite: T
+                }
+            使用
+                let foo: Person<string> = {name: "neko", favoite: "neko"}
+
+        约束: (使用起来限制比较大)
+            function foo<T extends {length: number}>() {}
+
+    复合类型
+        数组
+            number[]
+
+            // 不兼容 tsx
+            Array<number>
+        
+        元组
+            固定类型及其个数
+            let foo: [string, number] = ["hi", 666]
+        函数
+            可以定义别名:
+                let my_function = (foo: 123) => string
+
+            类型签名: (也可用接口)
+                一般模式:
+                    (foo: number) => string
+
+                完整模式:
+                    type fnType {
+                        (foo: number) => string,
+                        // 上面描述函数参数和返回值
+
+                        // 下面描述函数属性
+                        age: number
+                    }
+
+        类型联合
+            number | string | boolean
+            
+            可以为所选类型的任意一个, 且可以切换
+
+            使用方法: 参考 可能类型
+
+        类型别名
+            type str = string 
+
+            可以用任何形式的类型:
+                string
+                number | string
+                {a: number, b: string}
+                (a: 123) => any
+
+            扩展: (须更换类型名称)
+                方法1:
+                    type User = {name: string}
+
+                    type Person = User & {age: number}
+
+                方法2:
+                    type Person = {name: string} & {age: number}
+
+            和接口的区别:
+                (1) 无法扩展自身
+                (2) 可以命名比较小的类型
+                (3) 两者克混用, 底层是同一个东西, 但声明方式不同
+                // 其他功能都可以通用
+
+        接口
+            interface Person {
+                name: string,
+                age: number,
+            }
+
+            扩展: (可以在原有接口上扩展)
+                方法1: (类似 class)
+                    interface User {
+                        name: string
+                    }
+
+                    interface Person extends User {
+                        age: number
+                    }
+
+                方法2: (重复定义 以扩展)
+                    interface Person {
+                        name: string
+                    }
+
+                    interface Person{
+                        age: number
+                    }
