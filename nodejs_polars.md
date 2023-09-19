@@ -1,10 +1,10 @@
 # nodejs-polars 教程
 板块分类:   
-  - 大致介绍  
-  - 数据类型  
-  - 数据结构  
+  - 介绍  
+  - 类型 
+  - 结构  
 
-## 大致介绍
+## 介绍
 
 #### 简要说明  
 polars 原生代码是一个由 Rust 写的模块,  
@@ -39,7 +39,7 @@ console.log(pl)
 > 所以只用导出其中的 `pl` 这一个子模块,
 > 需要用到的函数, 变量等也都是通过 `pl.` 来访问.
 
-## 数据类型  
+## 类型  
 大致分 3 类:
   - 数字
   - 特殊值
@@ -67,13 +67,13 @@ console.log(pl)
 > `List` 即数组结构  
 > `Struct` 即对象结构, 但在 polars 中具体表现为, 用上大括号的数组, 且有一些位置问题, 故暂无太大用途
 
-## 数据结构
+## 结构
 大致分 3 个部分:
   - Series
   - DataFrame
   - Expr
 
-#### 一般结构说明  
+### 说明  
 对于一般数据结构 功能与用途,  
 可以通过一个四字词语来拓展, 即 "增删改查",  
 而我具体划分如下:
@@ -94,7 +94,7 @@ console.log(pl)
 > 后面对 `Series`, `DataFrame`, `Expr` 的相关功能,  
 > 也会按照上面的说明,让其更利于归类和记忆
 
-#### Series
+### Series
 **特性 :**  
 类似于数组, 是最基础的结构,  
 DataFrame 中的每一列都由 Series 构成,  
@@ -212,59 +212,67 @@ DataFrame 的每个列名即为各个 Series 的名字,
     - 类型: `.dtype`  
     - 长度(高度): `.len()`
 
-  - 插入
-    - 直接插入  
-      没有具体的实现方法, 可以自己按照数组的原理进行实现, 下面给出一个例子  
-      ```js
-      function seriesInsert(series, index, value) {
-        // 可不要像 可怜的数组一样, 下标不能直接支持负数
+**插入 :**
+  - 直接插入  
+    没有具体的实现方法, 可以自己按照数组的原理进行实现, 下面给出一个例子  
+    ```js
+    function seriesInsert(series, index, value) {
+      // 可不要像 可怜的数组一样, 下标不能直接支持负数
 
-        // 下标若为负数, 这转为对应的正数
-        index = index < 0 ? series.len() + index + 1 : index;
+      // 下标若为负数, 这转为对应的正数
+      index = index < 0 ? series.len() + index + 1 : index;
 
-        let head = series.slice(0, index);
-        let tail = series.slice(index + 1, series.len());
+      let head = series.slice(0, index);
+      let tail = series.slice(index + 1, series.len());
 
-        let newSeries = head
-          .concat(pl.Series([value]))
-          .concat(tail);
+      let newSeries = head
+        .concat(pl.Series([value]))
+        .concat(tail);
 
-        return newSeries;
-      }
-      ```
-    - 尾部快速插入相同值
-      `.extendConstant()`
+      return newSeries;
+    }
+    ```
+  - 尾部快速插入相同值
+    `.extendConstant()`
 
-  - 删除  
-    - 直接删除   
-      也没有具体的实现方法, 下面自己实现一个
-      ```js
-      function seriesDelete(series, index) {
-        index = index < 0 ? series.len() + index: index;
+**删除 :**  
+  - 直接删除   
+    也没有具体的实现方法, 下面自己实现一个
+    ```js
+    function seriesDelete(series, index) {
+      index = index < 0 ? series.len() + index: index;
 
-        let head = series.slice(0, index);
-        let tail = series.slice(index + 1, series.len());
+      let head = series.slice(0, index);
+      let tail = series.slice(index + 1, series.len());
 
-        let newSeries = head.concat(tail);
+      let newSeries = head.concat(tail);
 
-        return newSeries;
-      }
-    - 带空位删除  
-      即把要删除的值变为 `null`
-      `.shift()`
-    - 删除空位  
-      即去掉带 `null` 值的位置
-      `.dropNulls()`
+      return newSeries;
+    }
+    ```
+  - 删除后留下 `null`  
+    即把要删除的值变为 `null`
+    `.shift()`
+  - 删除 `null`  
+    即去掉带 `null` 值的位置
+    `.dropNulls()`
+  
+
+**更改 :**
+  - 直接替换值
+    `.shiftAndFill()`
+  - 填充 `null`  
+    把 `null` 都填充为其它值
+    `.fillNull()`, `.interpolate()`
+
+**运算 :**
+  - 数学运算
+    - 四则和取模
+    - 小数取整
+    - 统计
+    - 累积
+  
+  - 比较运算
     
 
-  - 更改
-    - 直接替换值
-      `.shiftAndFill()`
-    - 填充 `null`  
-      把 `null` 都填充为其它值
-      `.fillNull()`, `.interpolate()`
-
-  - 运算
-    - 数学运算
-    - 比较运算
-      
+### DataFrame
