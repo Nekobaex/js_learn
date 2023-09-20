@@ -24,7 +24,7 @@ polars 功能类似于 Python 里的 Pandas,
 
 #### 开始使用
 ```bash
-> yarn add nodejs-polars
+yarn add nodejs-polars
 ```
 > 注意不要用 `yarn add polars`
 ```javascript
