@@ -45,17 +45,17 @@ console.log(pl)
   - 特殊值
   - 结构  
 
-#### 数字  
+### 数字  
   - 4 个 `Int`: `Int8`, `Int16`, `Int32`, `Int64`
   - 4 个 `UInt`: `UInt8`, `UInt16`, `UInt32`, `UInt64`
   - 2 个 `Float`: `Float32`, `Float64`
 
-#### 特殊值
+### 特殊值
   - 最重要: `Utf8`, `Bool`
   - 次重要: `Date`, `Null`
   - 不重要: `Categorical`
 
-#### 结构
+### 结构
   - `List`
   - `Struct`
 > 以上所有类型都可通过 `pl.` 访问, 以下是对某些类型的解释  
