@@ -39,7 +39,7 @@ console.log(pl)
 > 所以只用导出其中的 `pl` 这一个子模块,
 > 需要用到的函数, 变量等也都是通过 `pl.` 来访问.
 
-## 数据  
+## 数据类型  
 分 3 个部分:
   - 数字
   - 特殊值
@@ -88,9 +88,23 @@ console.log(pl)
     - 坐标 (反查值)
     - 属性 (特殊值)
   - 插入 (增)
+    - 直接插入 (正常)
+    - 尾部插入 (快速)
   - 删除 (删)
+    - 直接删除 (正常)
+    - 删除后留空 (快速)
+    - 删除空位 (批量处理)
   - 更改 (改)
+    - 直接替换值
+    - 批量填空位
   - 运算
+    - 数学运算
+      - 四则与取模
+      - 小数
+      - 统计
+      - 累积
+    - 比较运算
+    
 > 将 "查" 放到了前面, 并新增了 3 个功能: 特性, 初始化, 计算
 
 > 后面对 `Series`, `DataFrame`, `Expr` 的相关功能,  
@@ -98,15 +112,16 @@ console.log(pl)
 
 ### Series
 **特性**  
-类似于数组, 是最基础的结构,  
-DataFrame 中的每一列都由 Series 构成,  
-DataFrame 的每个列名即为各个 Series 的名字,  
-为了和 DataFrame 按照行列匹配,   
-所以 Series 实际上应该是 竖着的序列,
+- 说明  
+  类似于数组, 是最基础的结构,  
+  DataFrame 中的每一列都由 Series 构成,  
+  DataFrame 的每个列名即为各个 Series 的名字,  
+  为了和 DataFrame 按照行列匹配,   
+  所以 Series 实际上应该是 竖着的序列
 
 **初始化**
   - 0 个参数:  
-    没有名称的空 Series
+    得到没有名称的空 `Series`
     
   - 1 个参数:  
     - (`字符串`), 得到有确定名称的 空 `Series`
@@ -218,21 +233,21 @@ DataFrame 的每个列名即为各个 Series 的名字,
     - 长度(高度): `.len()`
 
 **插入** 
-- 直接插入  
-  没有具体的实现方法, 可以自己按照数组的原理进行实现, 下面给出一个例子  
-  ```js
-  function seriesDelete(series = pl.Series(), index = -1) {
-  index = index < 0 ? series.len() + index: index;
-    
-      let head = series.slice(0, index);
-      let tail = series.slice(index + 1, series.len());
-    
-      let newSeries = head.concat(tail);
-    
-      return newSeries;
-  }
-  ```
-  - 尾部快速插入相同值
+  - 中间插入  
+    没有具体的实现方法, 可以自己按照数组的原理进行实现, 下面给出一个例子  
+    ```js
+    function seriesDelete(series = pl.Series(), index = -1) {
+    index = index < 0 ? series.len() + index: index;
+      
+        let head = series.slice(0, index);
+        let tail = series.slice(index + 1, series.len());
+      
+        let newSeries = head.concat(tail);
+      
+        return newSeries;
+    }
+    ```
+  - 尾部插入
     `.extendConstant()`
 
 **删除**  
@@ -250,10 +265,10 @@ DataFrame 的每个列名即为各个 Series 的名字,
       return newSeries;
     }
     ```
-  - 删除后留下 `null`  
+  - 删除后留空  
     即把要删除的值变为 `null`
     `.shift()`
-  - 删除 `null`  
+  - 删除空位  
     即去掉带 `null` 值的位置
     `.dropNulls()`
   
@@ -278,10 +293,36 @@ DataFrame 的每个列名即为各个 Series 的名字,
 ### DataFrame
 
 **特性**  
-前面说到 Series 是最 Polars 里基础的的结构,  
-那 DataFram 就是最常用且最方便的结构,  
-可以把它看作是 excel 表格, 且每一列都由一个 Series 构成.  
+- 说明  
+  前面说到 Series 是最 Polars 里基础的的结构,  
+  那 DataFram 就是最常用且最方便的结构,  
+  可以把它看作是 excel 表格, 且每一列都由一个 Series 构成.  
+- io  
+  - 概述
+    DataFrame 与 Series, Expr 的一个比较大的区别,  
+    就是 DataFrame 可以直接从文件读取, 也可以写入为文件.
+  - 读取
+    
+
+  > 读取的方法, 是以 `pl.` 开头, 表示这是一个 `pl` 模块的工具,  
+  > 将数据读出来, 然后可以赋值给变量
+
+  > 而写入的方法, 是以 `df.` 开头, 这里指的是一个名字叫 `df` 的 `DataFrame` 变量,   
+  > 而 `df.` 的那些方法, 表示将 `df` 中的数据, 写入到特定地方 
+
+  > 如果不考虑广泛的兼容性, 只考虑性能的话,  
+  > 建议使用 `ipc` 格式的文件进行写入和读取, 
+  > 这里的 `ipc` 其实指的是 `Feather` 格式, 底层和 `Arrow` 格式相通, 
+  > 读取写入的过程中, 占用内存比较小, 且速度极快,    
+  > 并且对一些特定的数据类型可以压缩储存, 即除字符串外的其他类型
+
+**初始化**
+  - IO
+  
+
+
 **访问**  
+
 **插入**  
 **删除**  
 **更改**  
