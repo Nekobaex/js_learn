@@ -29,4 +29,5 @@ function seriesInsert(series = pl.Series(), index= -1, value = 0) {
     return newSeries;
 }
 
+pl.readJSON({format: "json"})
 console.log(seriesInsert())
