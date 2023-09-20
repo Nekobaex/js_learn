@@ -68,10 +68,11 @@ console.log(pl)
 > `Struct` 即对象结构, 但在 polars 中具体表现为, 用上大括号的数组, 且有一些位置问题, 故暂无太大用途
 
 ## 数据结构
-分 3 个部分:
+分 4 个部分:
   - Series
   - DataFrame
   - Expr
+  - LazyDataFrame
 
 ### 说明 
 > 第 0 部分
@@ -110,7 +111,7 @@ console.log(pl)
 > 也会按照上面的说明,让其更利于归类和记忆
 
 ### Series
-**特性** 
+**说明** 
 类似于数组, 是最基础的结构,  
 DataFrame 中的每一列都由 Series 构成,  
 DataFrame 的每个列名即为各个 Series 的名字,  
@@ -291,15 +292,15 @@ DataFrame 的每个列名即为各个 Series 的名字,
 
 ### DataFrame
 
-**特性**  
+**说明**  
 前面说到 Series 是最 Polars 里基础的的结构,  
 那 DataFram 就是最常用且最方便的结构,  
 可以把它看作是 excel 表格, 且每一列都由一个 Series 构成.  
 DataFrame 与 Series, Expr 的一个比较大的区别,  
 就是 DataFrame 可以直接从文件读取, 也可以写入为文件,  
 在后面的 `转换` 部分会详细解释.
+
 **初始化**
-  - IO
   
 
 
@@ -339,3 +340,16 @@ DataFrame 与 Series, Expr 的一个比较大的区别,
     > 这里的 `ipc` 其实指的是 `Feather` 格式, 底层和 `Arrow` 格式相通, 
     > 读取写入的过程中, 占用内存比较小, 且速度极快,    
     > 并且对一些特定的数据类型可以压缩储存, 即除字符串外的其他类型
+
+### Expr
+**说明**
+**初始化**
+
+**访问**  
+
+**插入**  
+**删除**  
+**更改**  
+**运算**  
+
+**转换**
