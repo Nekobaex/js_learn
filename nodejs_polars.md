@@ -106,7 +106,7 @@ DataFrame 的每个列名即为各个 Series 的名字,
 
 **初始化 :**
   - 1 个参数:  
-    - 若为 `字符串`, 有确定名称的 空 `Series`
+    - (`字符串`), 得到有确定名称的 空 `Series`
       ```js
       let s = pl.Series('foo')
       console.log(s)
@@ -121,7 +121,7 @@ DataFrame 的每个列名即为各个 Series 的名字,
       > 第一个数字为 Series 的高度 (前面说明了 Series 是竖向的),  
       > 第二个数字在 DataFrame 表示列宽,  
       > `Series` 列数固定为 1, 故第二个数字空缺 
-    - 若为 `数组`, 没有名称, 有值的 `Series`
+    - (`数组`), 得到没有名称, 有值的 `Series`
       ```js
       let s = pl.Series([1, 2, 3])
       console.log(s)
@@ -137,13 +137,13 @@ DataFrame 的每个列名即为各个 Series 的名字,
       ```
 
   - 2 个参数:  
-    (`字符串`, `数组`), 有确定名称, 有值的 `Series`
+    (`字符串`, `数组`), 得到有确定名称, 有值的 `Series`
       ```js
       // 省略
       ```
 
   - 3 个参数:  
-    (`字符串`, `数组`, `数据类型`), 有确定名称, 有值, 有确定类型的 `Series`
+    (`字符串`, `数组`, `数据类型`), 得到有确定名称, 有值, 有确定类型的 `Series`
     ```js
     let s = pl.Series('foo', [1, 2, 3], pl.Int8)
     console.log(s)
