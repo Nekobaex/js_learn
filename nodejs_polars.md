@@ -104,8 +104,8 @@ console.log(pl)
       - 统计
       - 累积
     - 比较运算
-    
-> 将 "查" 放到了前面, 并新增了 3 个功能: 特性, 初始化, 计算
+  - 转换
+> 将 "查" 放到了前面, 并新增了 4 个功能: 特性 与 初始化, 计算 与 转换
 
 > 后面对 `Series`, `DataFrame`, `Expr` 的相关功能,  
 > 也会按照上面的说明,让其更利于归类和记忆
@@ -289,6 +289,7 @@ console.log(pl)
   
   - 比较运算
     
+**转换**
 
 ### DataFrame
 
@@ -297,18 +298,18 @@ console.log(pl)
   前面说到 Series 是最 Polars 里基础的的结构,  
   那 DataFram 就是最常用且最方便的结构,  
   可以把它看作是 excel 表格, 且每一列都由一个 Series 构成.  
-- io  
-  - 概述
-    DataFrame 与 Series, Expr 的一个比较大的区别,  
-    就是 DataFrame 可以直接从文件读取, 也可以写入为文件.
-  - 读取
-    
+  DataFrame 与 Series, Expr 的一个比较大的区别,  
+  就是 DataFrame 可以直接从文件读取, 也可以写入为文件,  
+  在后面的 `转换` 部分会详细解释.
 
   > 读取的方法, 是以 `pl.` 开头, 表示这是一个 `pl` 模块的工具,  
   > 将数据读出来, 然后可以赋值给变量
 
   > 而写入的方法, 是以 `df.` 开头, 这里指的是一个名字叫 `df` 的 `DataFrame` 变量,   
   > 而 `df.` 的那些方法, 表示将 `df` 中的数据, 写入到特定地方 
+
+  > `ipc`, `parquet`, `avro` 都是二进制格式  
+  > `JSON`, `CSV` 都是字符串格式
 
   > 如果不考虑广泛的兼容性, 只考虑性能的话,  
   > 建议使用 `ipc` 格式的文件进行写入和读取, 
@@ -327,3 +328,19 @@ console.log(pl)
 **删除**  
 **更改**  
 **运算**  
+
+**转换**
+  - io  
+    - 概述  
+    - 读取  
+      `pl.readIPC()`,  
+      `pl.readParquet`,  
+      `pl.readAvro()`,  
+      `pl.readJSON({format: 'json'})`, 
+      `pl.readCSV()`
+    - 写入  
+      `df.writeIPC()`,  
+      `df.writeParquet`,  
+      `df.writeAvro()`,  
+      `df.writeJSON({format: 'json'})`, 
+      `df.writeCSV()`
