@@ -1,8 +1,8 @@
 # nodejs-polars 教程
 分 3 个部分:   
   - 介绍  
-  - 类型 
-  - 结构  
+  - 数据类型 
+  - 数据结构  
 
 ## 介绍
 
@@ -39,7 +39,7 @@ console.log(pl)
 > 所以只用导出其中的 `pl` 这一个子模块,
 > 需要用到的函数, 变量等也都是通过 `pl.` 来访问.
 
-## 类型  
+## 数据  
 分 3 个部分:
   - 数字
   - 特殊值
@@ -67,7 +67,7 @@ console.log(pl)
 > `List` 即数组结构  
 > `Struct` 即对象结构, 但在 polars 中具体表现为, 用上大括号的数组, 且有一些位置问题, 故暂无太大用途
 
-## 结构
+## 数据结构
 分 3 个部分:
   - Series
   - DataFrame
@@ -105,6 +105,9 @@ DataFrame 的每个列名即为各个 Series 的名字,
 所以 Series 实际上应该是 竖着的序列,
 
 **初始化**
+  - 0 个参数:  
+    没有名称的空 Series
+    
   - 1 个参数:  
     - (`字符串`), 得到有确定名称的 空 `Series`
       ```js
@@ -215,25 +218,20 @@ DataFrame 的每个列名即为各个 Series 的名字,
     - 长度(高度): `.len()`
 
 **插入** 
-  - 直接插入  
-    没有具体的实现方法, 可以自己按照数组的原理进行实现, 下面给出一个例子  
-    ```js
-    function seriesInsert(series, index, value) {
-      // 可不要像 可怜的数组一样, 下标不能直接支持负数
-
-      // 下标若为负数, 这转为对应的正数
-      index = index < 0 ? series.len() + index + 1 : index;
-
+- 直接插入  
+  没有具体的实现方法, 可以自己按照数组的原理进行实现, 下面给出一个例子  
+  ```js
+  function seriesDelete(series = pl.Series(), index = -1) {
+  index = index < 0 ? series.len() + index: index;
+    
       let head = series.slice(0, index);
       let tail = series.slice(index + 1, series.len());
-
-      let newSeries = head
-        .concat(pl.Series([value]))
-        .concat(tail);
-
+    
+      let newSeries = head.concat(tail);
+    
       return newSeries;
-    }
-    ```
+  }
+  ```
   - 尾部快速插入相同值
     `.extendConstant()`
 
@@ -282,7 +280,7 @@ DataFrame 的每个列名即为各个 Series 的名字,
 **特性**  
 前面说到 Series 是最 Polars 里基础的的结构,  
 那 DataFram 就是最常用且最方便的结构,  
-可以把它看作是 excel 表格, 每一列都由一个 Series 构成.  
+可以把它看作是 excel 表格, 且每一列都由一个 Series 构成.  
 **访问**  
 **插入**  
 **删除**  

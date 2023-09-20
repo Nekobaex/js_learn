@@ -2,7 +2,7 @@ import { pl, DataType } from 'nodejs-polars'
 
 let s = pl.Series([1, 2, 3, 4, 5, 6, 7])
 
-function seriesDelete(series, index) {
+function seriesDelete(series = pl.Series(), index = -1) {
     index = index < 0 ? series.len() + index: index;
 
     let head = series.slice(0, index);
@@ -13,7 +13,7 @@ function seriesDelete(series, index) {
     return newSeries;
   }
 
-function seriesInsert(series, index, value) {
+function seriesInsert(series = pl.Series(), index= -1, value = 0) {
     // 可不要像 可怜的数组一样, 下标不能直接支持负数
 
     // 下标若为负数, 这转为对应的正数
@@ -29,5 +29,4 @@ function seriesInsert(series, index, value) {
     return newSeries;
 }
 
-console.log(s.extendConstant(2, 2))
-console.log(s)
+console.log(seriesInsert())
