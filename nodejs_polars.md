@@ -28,12 +28,12 @@ polars 功能类似于 Python 里的 Pandas,
 ```
 > 注意不要用 `yarn add polars`
 ```javascript
-import { pl } from 'polars'
+import { pl } from 'nodejs-polars'
 
 console.log(pl) 
 ```
 
-> 用 `{ pl }` 说明 `pl` 是其中的子模块,  
+> 期中使用的 `{ pl }` 说明 `pl` 是其中的子模块,  
 > 但其他同层级的子模块,
 > 要么是从 pl 中重导出的, 要么是其他功能的中间业务层.  
 > 所以只用导出其中的 `pl` 这一个子模块,
