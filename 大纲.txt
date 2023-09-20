@@ -8,7 +8,7 @@ md 教程:
     项目打包: webpack, rollup, vite
     项目编译: babel
     界面: vue, react, electron
-    数据库: Mongodb, Redis
+    数据处理: Mongodb, Redis, Polars
     
 拓展
     数据结构
