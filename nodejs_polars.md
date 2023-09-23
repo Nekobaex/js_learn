@@ -89,6 +89,7 @@ console.log(pl)
     - 属性 (特殊值)
   - 插入 (增)
     - 直接插入 (正常)
+    - 连接
     - 尾部插入 (快速)
   - 删除 (删)
     - 直接删除 (正常)
@@ -96,7 +97,7 @@ console.log(pl)
     - 删除空位 (批量处理)
   - 更改 (改)
     - 直接替换值
-    - 批量填空位
+    - 填充空位
   - 运算
     - 数学运算
       - 四则与取模
@@ -121,43 +122,29 @@ DataFrame 的每个列名即为各个 Series 的名字,
 **初始化**
   - 0 个参数:  
     得到没有名称的空 `Series`
-    
-  - 1 个参数:  
-    - (`字符串`), 得到有确定名称的 空 `Series`
+  - 1 个参数:
+    - (`数组`), 得到名称为 `''` 的数组
+    - (`字符串`), 得到有名称的 空 `Series`
+
+  - 2 个参数:  
+    (`字符串`, `数组`), 得到有确定名称, 有值的 `Series`
       ```js
-      let s = pl.Series('foo')
+      let s = pl.Series('foo', [1, 2, 3])
       console.log(s)
 
-      // 输出:
-      // shape: (0,)
+      // shape: (3,)        
       // Series: 'foo' [f64]
       // [
-      // ]
-      ```
-      > `shape` 表示 Series 的形状,  
-      > 第一个数字为 Series 的高度 (前面说明了 Series 是竖向的),  
-      > 第二个数字在 DataFrame 表示列宽,  
-      > `Series` 列数固定为 1, 故第二个数字空缺 
-    - (`数组`), 得到没有名称, 有值的 `Series`
-      ```js
-      let s = pl.Series([1, 2, 3])
-      console.log(s)
-
-      // 输出:
-      // shape: (3,)
-      // Series: '' [f64]
-      // [
-      //         1.0
+      //         1.0        
       //         2.0
       //         3.0
       // ]
       ```
 
-  - 2 个参数:  
-    (`字符串`, `数组`), 得到有确定名称, 有值的 `Series`
-      ```js
-      // 省略
-      ```
+    > `shape` 表示 Series 的形状,  
+    > 第一个数字为 Series 的高度 (前面说明了 Series 是竖向的),  
+    > 第二个数字在 DataFrame 表示列宽,  
+    > `Series` 列数固定为 1, 故第二个数字空缺 
 
   - 3 个参数:  
     (`字符串`, `数组`, `数据类型`), 得到有确定名称, 有值, 有确定类型的 `Series`
@@ -232,32 +219,50 @@ DataFrame 的每个列名即为各个 Series 的名字,
     - 长度(高度): `.len()`
 
 **插入** 
-  - 中间插入  
+  - 直接插入  
     没有具体的实现方法, 可以自己按照数组的原理进行实现, 下面给出一个例子  
     ```js
-    function seriesDelete(series = pl.Series(), index = -1) {
-    index = index < 0 ? series.len() + index: index;
-      
-        let head = series.slice(0, index);
-        let tail = series.slice(index + 1, series.len());
-      
-        let newSeries = head.concat(tail);
-      
-        return newSeries;
+    function seriesInsert(
+      series = pl.Series(), index= -1, value = 0
+    ) {
+
+      // 可不要像 可怜的数组一样, 下标不能直接支持负数
+      // 下标若为负数, 这转为对应的正数
+      index = index < 0 ? series.len() + index + 1 : index;
+
+      let head = series.slice(0, index);
+      let tail = series.slice(
+        index + 1, 
+        series.len() - index - 1
+      );
+
+      let newSeries = head
+        .concat(pl.Series([value]))
+        .concat(tail);
+
+      return newSeries;
     }
     ```
+  - 连接
+    `.concat()`
+
   - 尾部插入
     `.extendConstant()`
 
 **删除**  
   - 直接删除   
-    也没有具体的实现方法, 下面自己实现一个
+    没有具体的实现方法, 下面自己实现一个
     ```js
-    function seriesDelete(series, index) {
+    function seriesDelete(series = pl.Series(), index = -1) {
+
+      // 处理下标
       index = index < 0 ? series.len() + index: index;
 
       let head = series.slice(0, index);
-      let tail = series.slice(index + 1, series.len());
+      let tail = series.slice(
+        index + 1, 
+        series.len() - index - 1
+      );
 
       let newSeries = head.concat(tail);
 
@@ -274,8 +279,7 @@ DataFrame 的每个列名即为各个 Series 的名字,
 
 **更改**
   - 直接替换值
-    `.shiftAndFill()`
-  - 填充 `null`  
+  - 填充空位  
     把 `null` 都填充为其它值
     `.fillNull()`, `.interpolate()`
 
@@ -301,15 +305,70 @@ DataFrame 与 Series, Expr 的一个比较大的区别,
 在后面的 `转换` 部分会详细解释.
 
 **初始化**
-  
+  - 0 个参数  
+    得到一个空的 `DataFrame`
+
+  - 1 个参数
+    - (`对象 {key 为字符串, value 为数组}`), 得到一个列名确定的`DataFrame`
+
+    - (二维数组), 得到 列名称自动分配为 `column_n` (n 从 0 递增) 的 `DataFrame`
+
+  - 2 个参数
+    (`二维数组 [[]]`, `对象 {columns: 数组 []}`), 列名称自定义的 `DataFrame`
+    > 第二个参数里的其他 key 暂时没用
 
 
 **访问**  
+  - 值
+    - 一列  
+      `.getColumn()`
+    - 一行
+      `.row()`
+    - 一个值
+      得到一行, 或者一列后, 再用下表访问特定值
+
+  - 截取 (按行)
+    - 取样  
+      `.sample()`, `.head()`, `.tail()`
+    - 条件截取
+      `.filter()`, `.slice()`
+
+  - 遍历 (按行)
+    `.map()`
+
+  - 坐标
+
+  - 属性
+    - 列名 `.columns`
+    - 类型 `.dtypes`
+    - 形状 `.shape`, `.height`, `.width`
 
 **插入**  
+  - 直接插入 (列)
+    `.insertAtIdx(index, Series)` (动态函数)  
+
+  - 连接 (行)
+    `.vstack()`
+
+  - 尾部插入 (列)
+    `.hstack()`
+
 **删除**  
+  - 直接删除 (列)  
+    `.drop()` (动态函数)
+  - 删除后留空 (行)
+    `.shift()` 
+
+  - 删除空位 (行)
+    `.dropNulls()` 
+
 **更改**  
+  - 直接替换值
+  - 填充空位 
+    `.fillNull()`
+
 **运算**  
+  - 数学运算
 
 **转换**
   - io  
@@ -327,24 +386,28 @@ DataFrame 与 Series, Expr 的一个比较大的区别,
       `df.writeJSON({format: 'json'})`, 
       `df.writeCSV()`
     > 读取的方法, 是以 `pl.` 开头, 表示这是一个 `pl` 模块的工具,  
-    > 将数据读出来, 然后可以赋值给变量
+    > 将数据读取出来, 然后可以赋值给变量
 
     > 而写入的方法, 是以 `df.` 开头, 这里指的是一个名字叫 `df` 的 `DataFrame` 变量,   
     > 而 `df.` 的那些方法, 表示将 `df` 中的数据, 写入到特定地方 
 
-    > `ipc`, `parquet`, `avro` 都是二进制格式  
+    > `Ipc`, `Parquet`, `Avro` 都是二进制格式  
     > `JSON`, `CSV` 都是字符串格式
 
     > 如果不考虑广泛的兼容性, 只考虑性能的话,  
     > 建议使用 `ipc` 格式的文件进行写入和读取, 
-    > 这里的 `ipc` 其实指的是 `Feather` 格式, 底层和 `Arrow` 格式相通, 
+    > 这里的 `ipc` 其实指的是 `Feather` 格式, 底层用上了 `Arrow`,  
     > 读取写入的过程中, 占用内存比较小, 且速度极快,    
-    > 并且对一些特定的数据类型可以压缩储存, 即除字符串外的其他类型
+    > 并且可以对数据自动进行压缩储存
 
 ### Expr
-**说明**
-**初始化**
+**说明**  
+Expr 不是直接通过函数执行,   
+而是相当于, 通过函数获得一组命令,  
+然后交给 `df.select()` 这个类似虚拟机的函数去处理,  
 
+**初始化**
+  
 **访问**  
 
 **插入**  
