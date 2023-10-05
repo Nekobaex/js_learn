@@ -8,7 +8,10 @@ md 教程:
     项目打包: webpack, rollup, vite
     项目编译: babel
     界面: vue, react, electron
-    数据处理: Mongodb, Redis, Polars
+    数据处理: Mongodb, Redis, 
+
+第三方库
+    Polars
     
 拓展
     数据结构
@@ -23,6 +26,8 @@ md 教程:
     集群
     docker
     文档
+
+
 
 想法:
     状态机 & 可视化编程 & blender 节点 & 平面设计 & 接口编程

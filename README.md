@@ -1,3 +1,0 @@
-# js_learn
-
-Hello!
