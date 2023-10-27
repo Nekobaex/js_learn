@@ -1,32 +1,27 @@
-import { pl, DataType } from 'nodejs-polars'
+import Koa from 'koa'
+const app = new Koa();
 
-let s = pl.Series([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+// logger
 
-function seriesDelete(series = pl.Series(), index = -1) {
+app.use(async (ctx, next) => {
+  await next();
+  const rt = ctx.response.get('X-Response-Time');
+  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
+});
 
-  // 处理下标
-  index = index < 0 ? series.len() + index: index;
+// x-response-time
 
-  let head = series.slice(0, index);
-  let tail = series.slice(index + 1, series.len() - index - 1);
+app.use(async (ctx, next) => {
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  ctx.set('X-Response-Time', `${ms}ms`);
+});
 
-  let newSeries = head.concat(tail);
+// response
 
-  return newSeries;
-}
-// console.log(
-//   seriesDelete(s, 3)
-// )
+app.use(async ctx => {
+  ctx.body = '<div> hi </div>';
+});
 
-
-let d = pl.DataFrame({
-  'a': [1, 2, null],
-  'b': [3, 4, 5]
-})
-
-d.map((item)=>{
-  console.log(item)
-})
-
-console.log(s.shiftAndFill(3, 999))
-console.log(d.shiftAndFill(3, 3))
+app.listen(25565);
