@@ -1,0 +1,19 @@
+单选
+  id
+
+  tag
+  class
+  attr
+  
+  限定选 a:
+    a.b[c] tag为 a, class 为 b, 包含 c attr
+
+  限定选 c: (从左侧开始找)
+    a>b>c  相邻子节点关系
+    a b c  子孙节点关系
+    a+b+c  相邻兄弟节点关系
+    a~b~c  不相邻但有顺序的兄弟节点
+复选:
+  *
+
+  a, b, c 

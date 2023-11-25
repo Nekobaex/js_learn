@@ -1,8 +1,0 @@
-特殊说明
-    'use strict'
-    句尾分号
-    不用 var 而用 let
-
-变量声明
-let foo = 666
-let bar = 'hello'

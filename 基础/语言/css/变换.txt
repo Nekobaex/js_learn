@@ -1,6 +1,0 @@
-2d:
-  translate()
-  rotate()
-  scaleX()
-  scaleY()
-  scale()

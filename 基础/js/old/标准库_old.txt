@@ -1,0 +1,209 @@
+// js 中, 类与对象本质相同
+// 开头大写对象, 有了构造函数的功能, 即可称为类
+// 括号括起来的变量, 表示严格来说不属于, 但关系很大
+
+globalThis: (4)
+  类型对象
+    原始类型: 
+      有值: (4)
+        Boolean
+        Number (Infinity, NaN)
+        BigInt
+        String
+
+      无值: (2)
+        (undefined)
+        (null)
+
+    复合类型: (8 类)
+      对象: Object
+        
+      数组: (20 = 8 + 11 + 1)
+        Array
+
+        typedArray (11 个)
+
+        DataView
+        ArrayBuffer
+        SharedArrayBuffer
+        Atomics
+
+        Map
+        WeakMap
+        Set
+        WeakSet
+
+      函数: (8)
+        Function  -  AsyncFunction
+        Generator -  AsyncGenerator  -  GeneratorFunction  -  AsyncGeneratorFunction
+        Iterator  -  AsyncIterator
+
+      特殊值: (3)
+        Date
+        RegExp
+        Symbol
+
+      异步: Promise
+
+      错误: Error  -  typedError
+
+      代理: Proxy (Reflect)
+
+      国际化: Intl
+
+  工具对象: (14 = 8 + 2 + 4)
+    网络:    
+      URL
+
+      Request
+      Response
+
+      AbortController
+      AbortSignal
+
+      Headers
+
+      MessageChannel
+      MessageEvent
+      MessagePort
+
+    编解码:
+      File
+      Blob
+
+      TextDecoder
+      TextEncoder
+
+      JSON
+    
+    性能:
+
+      PerformanceEntry
+      PerformanceMark
+      PerformanceMeasure
+      PerformanceObserver
+      PerformanceObserverEntryList
+      PerformanceResourceTiming
+    
+    流:
+      ReadableByteStreamController
+      ReadableStream
+      ReadableStreamBYOBReader
+      ReadableStreamBYOBRequest
+      ReadableStreamDefaultController
+      ReadableStreamDefaultReader
+
+      WritableStream
+      WritableStreamDefaultController
+      WritableStreamDefaultWriter
+
+      TransformStream
+
+      TextDecoderStream
+      TextEncoderStream
+
+      TransformStreamDefaultController
+
+      DecompressionStream
+      CompressionStream
+
+      ByteLengthQueuingStrategy
+      CountQueuingStrategy
+    
+    加密:
+      Crypto
+      CryptoKey
+      SubtleCrypto
+
+    事件:
+      BroadcastChannel
+      Event
+      EventTarget
+      CustomEvent
+      queueMicrotask
+    
+    浏览器:
+      console
+      DOMException
+      FormData
+
+    垃圾回收:
+      FinalizationRegistry
+      WeakRef
+    
+    typedError: (6 = 2 + 4)
+      SyntaxError
+      TypeError
+
+      EvalError
+      RangeError
+      ReferenceError
+      URIError
+      AggregateError
+
+    typedArray: (11 = (3 + 3) + 2 + 2 + 1)
+      Int8Array
+      Int16Array
+      Int32Array
+
+      Uint8Array
+      Uint16Array
+      Uint32Array
+
+      BigInt64Array
+      BigUint64Array
+
+      Float32Array
+      Float64Array
+
+      Uint8ClampedArray
+    
+    wasm: WebAssembly
+
+    数学: Math
+
+    反射: Reflect
+
+    原子对象: Atomics
+
+  函数: (7)
+    网络: fetch
+
+    编解码: (6 = 2 + 4)
+      btoa()
+      atob()
+
+      encodeURI()
+      decodeURI()
+      encodeURIComponent()
+      decodeURIComponent()
+    
+    性能: performance
+    
+    定时器: (4 = 2 + 2)
+      setTimeout
+      clearTimeout
+
+      setInterval
+      clearInterval
+
+    判断: (2)
+      isFinite()
+      isNaN()
+
+    字符串解析: (3)
+      eval()
+      parseFloat()
+      parseInt()
+
+    深克隆: structuredClone
+
+  特殊值: (4)
+    Infinity, NaN
+
+    true, falsse
+
+    undefined
+
+    null
+

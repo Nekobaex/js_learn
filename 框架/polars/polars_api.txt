@@ -1,0 +1,242 @@
+[abc] 表示 abc 是属性, 而非方法
+
+DataType
+    数字
+        Int8,  Int16,  Int32,  Int64
+        UInt8, UInt16, UInt32, UInt64
+        Float64, Float32
+    
+    特殊值
+        Utf8
+        Bool
+        
+        Null
+        Date
+
+        Categorical
+
+    结构
+        List
+        Struct
+
+Expr & Series & DataFrame 通用方法:
+    计算
+        四则:
+            add / plus
+            sub / minus
+            mul / multipleBy
+            div / divideBy
+            rem / modulo
+
+        整体
+            sum
+            abs
+            clip
+
+        小数
+            ceil
+            floor
+            round
+
+        统计
+            max
+            min
+            mean
+            median
+            quantile
+    
+    判断
+        isDuplicated
+        isUnique
+
+    部分变更
+        筛选
+            sample
+            head
+            tail
+            slice
+            filter
+            unique
+
+        填充
+            fillNull
+            shift
+            shiftAndFill
+            interpolate
+
+        别名
+            alias | alias / rename | rename
+
+    结构更改
+        explode
+        serialize
+        sort
+
+Expr & Series 通用方法:
+    属性
+        [date]
+        [lst] 
+        [str]
+        [struct]
+
+    累积
+        cumCount
+        cumMax
+        cumMin
+        cumProd
+        cumSum
+
+    卷积
+        rollingMax
+        rollingMean
+        rollingMedian
+        rollingMin
+        rollingQuantile
+        rollingSkew
+        rollingStd
+        rollingSum
+        rollingVar
+
+    比较
+        eq / equals
+        gt / greaterThan
+        gtEq / greaterThanEquals
+        lt / lessThan
+        ltEq / lessThanEquals
+        neq / notEquals
+
+Series & DataFrame 通用方法:
+    属性
+        nChunks
+        nullCount
+        [dtype] | [dtypes]
+
+    内置:
+        [inspect]
+        [iterator]
+
+    计算
+        describe
+
+    部分更改
+        dropNulls
+        
+        sample
+        unique
+
+    结构更改
+        clone
+        rechunk
+        shrinkToFit
+
+Expr & DataFrame 通用方法:
+    std
+    var
+    where
+
+Expr 独有:
+    aggGroups
+    and
+    backwardFill
+    count
+    exclude
+    fillNan
+    first
+    flatten
+    forwardFill
+    isNan
+    isNotNan
+    keepName
+    last
+    list
+    lowerBound
+    not
+    or
+    over
+    pow
+    prefix
+    repeatBy
+    reverse
+    sortBy
+    suffix
+    upperBound
+
+Series 独有:
+    属性
+        [name]
+
+    Other
+        append
+        argTrue
+        bitand
+        bitor
+        bitxor
+        chunkLengths
+        concat
+        get
+        getIndex
+        hasValidity
+        isBoolean
+        isDateTime
+        isFloat
+        isNumeric
+        isUtf8
+        len
+        peakMax
+        peakMin
+        seriesEqual
+        set
+        setAtIdx
+        toArray
+        toFrame
+        toObject
+        toTypedArray
+        valueCounts
+        values
+        zipWith
+
+DataFrame 独有:
+    IO
+        toJSON
+        toObject
+        toRecords
+        writeAvro
+        writeCSV
+        writeIPC
+        writeJSON
+        writeParquet
+
+    Other
+        drop
+        findIdxByName
+        fold
+        frameEqual
+        getColumn
+        getColumns
+        groupBy
+        groupByDynamic
+        groupByRolling
+        hashRows
+        hstack
+        insertAtIdx
+        isEmpty
+        join
+        joinAsof
+        lazy
+        map
+        melt
+        partitionBy
+        pivot
+        replaceAtIdx
+        row
+        rows
+        select
+        toSeries
+        toStruct
+        transpose
+        unnest
+        vstack
+        withColumn
+        withColumnRenamed
+        withColumns
+        withRowCount
