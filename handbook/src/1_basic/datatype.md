@@ -69,7 +69,6 @@ unicode 字符:
   let id = Symbol('id')
 
 ### `undefined, null`
-具体内容, 在进阶部分的 "空类型" 中讲解
 
 
 ## 基础结构
@@ -85,13 +84,7 @@ unicode 字符:
     - 拷贝
 
 ### `Object`
-
 ### `Array`
-
-数组( `Array` ) 继承自 对象( `Object` ), 
-所以它的键理论上都是 字符串( `String` ).  
-但 js 引擎为了优化数组的空间和计算速度, 若键全为整数形式, 那么底层都是整数
-
 ### `Map, WeakMap`
 ### `Set, WeakSet`
 
@@ -100,7 +93,10 @@ unicode 字符:
 ### `Blob`
 
 ## 判断
+
 ## 转换
+
+## 包装
 
 
 
