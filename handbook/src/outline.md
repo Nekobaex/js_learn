@@ -13,7 +13,7 @@
     - [+] 原始类型
       - [x] `Number`
       - [x] `BigInt`
-      - [+] `Boolean`
+      - [x] `Boolean`
       - [ ] `String`
       - [+] `Symbol`
       - [ ] `undefined`
