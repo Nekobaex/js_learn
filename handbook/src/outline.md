@@ -1,0 +1,107 @@
+- [ ] 基础
+  - [ ] 严格模式
+  - [ ] 注释
+  - [ ] 语句与表达式
+    - [ ] 结束符与换行
+  - [ ] 变量
+    - [ ] 声明
+      - [ ] let
+      - [ ] var
+      - [ ] const
+    - [ ] 赋值
+  - [+] 数据类型
+    - [+] 类型
+      - [x] `Number`
+      - [+] `BigInt`
+      - [+] `Boolean`
+      - [+] `Symbol`
+      - [ ] `undefined`
+      - [ ] `null`
+    - [ ] 结构
+      - [+] `Object`
+      - [ ] `Array`
+      - [ ] `Map, WeakMap`
+      - [ ] `Set, WeakSet`
+    - [ ] 二进制
+      - [ ] `ArrayBuffer`
+      - [ ] `Blob`
+    - [ ] 判断
+    - [ ] 转换
+  - [ ] 函数
+    - [ ] 一般函数
+    - [ ] 箭头函数
+    - [ ] new Function
+    - [ ] 闭包
+    - [ ] 标签函数
+      - [ ] https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/raw#构建标识标签
+      - [ ] https://juejin.cn/post/7272740867932160041
+  - [ ] 作用域
+  - [ ] 解构
+  - [ ] 流程控制
+    - [ ] 分支
+    - [ ] 循环
+- [ ] 进阶
+  - [ ] 类
+  - [ ] 装饰器
+  - [ ] 生成器
+  - [ ] 迭代器
+  - [ ] 定时器
+  - [ ] 异步
+  - [ ] 模块
+  - [ ] 错误处理
+  - [ ] 代理
+  - [ ] 正则表达式
+  - [ ] 空类型
+    - [ ] undefined
+    - [ ] null
+    - [ ] ??
+    - [ ] ??=
+    - [ ] ?.
+  - [ ] 网络请求
+- [ ] 拓展
+  - [ ] 跨平台
+    - [ ] 前端
+    - [ ] 后端
+    - [ ] PWA
+    - [ ] 浏览器扩展程序
+    - [ ] 桌面应用
+    - [ ] 手机 app
+    - [ ] 微信, 支付宝, qq 小程序
+    - [ ] vscode 扩展
+    - [ ] Cocos 引擎脚本
+  - [ ] 前端
+  - [ ] 后端
+  - [ ] 包管理
+  - [ ] 代码规范 & 检查器
+  - [ ] 测试
+  - [ ] 垃圾回收
+  - [ ] 文档
+  - [ ] 算法与数据结构
+  - [ ] 设计模式
+  - [ ] 常用架构
+- [ ] 库
+  - [ ] `React`
+  - [ ] `Electron`
+- [ ] 实践
+  - [ ] 命令行工具
+  - [ ] 贪吃蛇小游戏
+  - [ ] 爬虫
+  - [ ] 博客
+  - [ ] 购物网站
+- [ ] 参考
+  - [ ] 模块
+    - [ ] 类型
+      - [ ] Object, Array, 
+      - [ ] Number, String, Boolean, 
+      - [ ] Symbol, BigInt,
+      - [ ] Map, WeakMap, Set, WeakSet,
+    - [ ] 通用
+      - [ ] GlobalThis,
+      - [ ] Math,
+      - [ ] Json, Date,
+      - [ ] console,
+    - [ ] 平台
+      - [ ] HTML & CSS
+      - [ ] 服务端特有的模块
+  - [ ] 运算符
+  - [ ] 特定值

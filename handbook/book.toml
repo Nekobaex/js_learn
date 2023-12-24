@@ -1,0 +1,6 @@
+[book]
+authors = ["baexne"]
+language = "en"
+multilingual = false
+src = "src"
+title = "js_handbook"
