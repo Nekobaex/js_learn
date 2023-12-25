@@ -21,9 +21,9 @@
       - [x] `Number`
       - [x] `BigInt`
       - [x] `Boolean`
-      - [+] `String`
-      - [+] `Symbol`
-      - [+] `undefined`
+      - [ ] `String`
+      - [ ] `Symbol`
+      - [ ] `undefined`
       - [ ] `null`
     - [+] 结构
       - [x] `Object`

@@ -215,7 +215,7 @@
 ## 常用属性和方法
 - `Object`
   - 静态方法
-    - `assign()`
+    - `assign()`  
       (在上面的 '复制' 中讲过)
     - 
     - `keys(object)`  

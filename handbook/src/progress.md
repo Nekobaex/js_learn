@@ -7,9 +7,5 @@
       - [x] `Number`
       - [x] `BigInt`
       - [x] `Boolean`
-      - [+] `String`
-      - [+] `Symbol`
-      - [+] `undefined`
     - [+] 结构
       - [+] `Object`
-      - [+] `Array`
