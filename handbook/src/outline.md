@@ -26,7 +26,7 @@
       - [+] `undefined`
       - [ ] `null`
     - [+] 结构
-      - [+] `Object`
+      - [x] `Object`
       - [+] `Array`
       - [ ] `Map, WeakMap`
       - [ ] `Set, WeakSet`

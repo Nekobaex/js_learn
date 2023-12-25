@@ -183,9 +183,9 @@
   }
   ```
 
-- 拷贝:
+- 复制:
   ```js
-  // 浅层拷贝
+  // 浅层复制
   // 将其他对象(origin)的所有 key, 复制到该对象(target)
   // 若有相同的 key, 则该对象中的 value 会被覆盖
   let origin = {
@@ -203,7 +203,7 @@
     {a: 'aaa', b: 'bbb', c: 'cccccc'}
   */
 
-  // 深层拷贝 (使用 lodash 库)
+  // 深层复制 (使用 lodash 库)
   let a = _.cloneDeep(foo);
   ```
 
@@ -213,10 +213,37 @@
   在进阶篇会讲到 `class`, 并简单介绍一下 js 的 `prototype`(即对象的类属性)
 
 ## 常用属性和方法
-Object
-  - keys(object)  
-    将对象的 key 复制提取出来, 组成一个数组
-    ```js
-    // 可以此获取对象的 key 数目
-    Object.keys(obj).length
-    ```
+- `Object`
+  - 静态方法
+    - `assign()`
+      (在上面的 '复制' 中讲过)
+    - 
+    - `keys(object)`  
+      将对象的 key 复制提取出来, 组成一个数组
+      ```js
+      // 可以此获取对象的 key 数目
+      Object.keys(obj).length
+
+      // 下面的 values(), entries() 同理, 分别将 值, 键值对 提取出来
+      ```
+    - `values(object)`
+    - `entries(object)`
+    - 
+    - `is(value1, value2)`  
+      用来静态地判断两个值是否相等,  
+      比 === 更表面化, 但引用不同, 值仍然不同
+      ```js
+      Object.is(NaN, NaN);  // true
+      Object.is(0  , - 0);  // false
+      NaN === NaN           // false
+      0   === - 0           // true
+
+      let a = {};
+      let b = {};
+      Object.is(a, b);  // false
+      a === b;          // false
+      ```
+  - 动态方法  
+    - `hasOwnProperty()`  
+      (在上面的 '检查' 中讲过)
+      
