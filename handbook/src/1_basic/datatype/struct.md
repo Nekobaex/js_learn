@@ -1,5 +1,11 @@
 # 结构
 
+- `Object`
+- `Array`
+- `Map, WeakMap`
+- `Set, WeakSet`
+
+
 基础结构的通用操作方法:
   - 创建
   - 结构分析
@@ -10,8 +16,3 @@
     - 检查 (查)
     - 遍历 (遍)
     - 复制 (复)
-
-- `Object`
-- `Array`
-- `Map, WeakMap`
-- `Set, WeakSet`

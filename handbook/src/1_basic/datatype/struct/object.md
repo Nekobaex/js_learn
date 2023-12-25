@@ -4,11 +4,11 @@
 `Object` 内部不是完全空的, 有 3个继承的键: `valueOf`, `toString`, `toLocaleString`.  
 
 ## 创建
-  ```js
-  // 下面两种方式都可以, 但第二种方法更常用, 更方便
-  let a = new Object();
-  let b = {};
-  ```
+```js
+// 下面两种方式都可以, 但第一种方法更常用, 更方便
+let b = {};
+let a = new Object();
+```
 
 ## 结构分析
 - 键 (key)  
