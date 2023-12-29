@@ -110,16 +110,22 @@ let a = new Object();
   ```
 
 ## 访问
-- 读取  
-  包括点运算符(`.`)和方括号运算符(`[]`),  
-  其中点运算符, 可访问的键名为任意原始类型的值, 以及标识符, 但不包括字符串和数字,  
+- 查询  
+  通过键查找值: 包括点运算符(`.`)和方括号运算符(`[]`),  
+  其中点运算符, 可访问的键名为任意原始类型的值, 以及标识符, 但不包括字符串和数字(`String, Number, BigInt`),  
   方括号运算符, 可访问的键名为任意原始类型的值, 若用标识符, 则表示以对应变量的值作为访问键名.  
 
-  点运算符可以进行可空访问, 访问过程中, 只要遇到一个 `undefined` 或 `null` 即停止, 并返回 `undefined`.
+  点运算符可以进行可空访问, 访问过程中, 只要遇到一个 `undefined` 或 `null` 即停止, 并返回 `undefined`.  
+
+  查找键是否存在:   
+  `key in array`, 检查所有的键, 包括继承的键.
+  `obj.hasOwnProperty(key)`, 检查只属于自己的键, 但如果连 `hasOwnProperty` 都被更改了的话, 就无法检查了,  
+  故 `object` 不适合存储未知键名的数据
+  
   ```js
   // 点运算符
   // obj.123      // 报错
-  obj.456n
+  // obj.456n     // 报错
   obj.true
   // obj.'hello'  // 报错, 但可以直接用 obj.hello
   obj.undefined
@@ -142,6 +148,12 @@ let a = new Object();
   obj.abc.efg
   obj?.efg?.abc
 
+  // 检查所有的键, 包括继承的键
+  'a' in foo
+
+  // 检查只属于自己的键, 
+  // 但如果有了自定义 hasOwnProperty 属性, 就无法检查了, 即最好不要用对象存储不确定数据
+  foo.hasOwnProperty('abc')
   ```
 
 - 更改  
@@ -158,29 +170,6 @@ let a = new Object();
   删除对象自己的键, 不能删继承得到的键.
   ```js
   delete obj.p
-  ```
-
-- 检查
-  ```js
-  // 检查键是否存在
-
-  // 检查所有的键, 包括继承的键
-  a in foo
-
-  // 检查只属于自己的键, 
-  // 但如果有了自定义 hasOwnProperty 属性, 就无法检查了, 即最好不要用对象存储不确定数据
-  foo.hasOwnProperty('abc')
-  ```
-
-- 遍历:
-  `for in` 只会遍历对象自己的键, 和'检查键是否存在'中的 `in` 不同
-  ```js
-  // 循环遍历
-  // for in
-  // 但不会遍历由继承得到的键
-  for (let i in obj) {
-    console.log(i)
-  }
   ```
 
 - 复制:
@@ -207,27 +196,38 @@ let a = new Object();
   let a = _.cloneDeep(foo);
   ```
 
+- 遍历:
+  `for in` 遍历对象自己的键, 和'检查键是否存在'中的 `in` 不同.
+  无法使用 `for of`.
+  ```js
+  let obj = {
+    a: 123,
+    b: 'hihi'
+  };
+
+  // for in
+  // 但不会遍历由继承得到的键
+  for (let i in obj) {
+    console.log(i)
+  }
+  ```
+
 ## 面向对象  
   在比较早的时候, js 对象和类是一体的, 对象可被对象继承, 对象也可被对象实现.  
   但现在基本使用 `class` 创建类, 并将对象自身的功能简化.  
   在进阶篇会讲到 `class`, 并简单介绍一下 js 的 `prototype`(即对象的类属性)
 
-## 常用属性和方法
+## 其他属性和方法
 - `Object`
   - 静态方法
-    - `assign()`  
-      (在上面的 '复制' 中讲过)
-    - 
     - `keys(object)`  
-      将对象的 key 复制提取出来, 组成一个数组
+      将对象的 `key` 复制提取出来, 组成一个数组
       ```js
       // 可以此获取对象的 key 数目
       Object.keys(obj).length
-
-      // 下面的 values(), entries() 同理, 分别将 值, 键值对 提取出来
       ```
-    - `values(object)`
-    - `entries(object)`
+    - `values(object)` 提取 `value`, 和 `keys()` 同理
+    - `entries(object)` 提取 `[key, value]`,  和 `keys()` 同理
     - 
     - `is(value1, value2)`  
       用来静态地判断两个值是否相等,  
@@ -243,7 +243,3 @@ let a = new Object();
       Object.is(a, b);  // false
       a === b;          // false
       ```
-  - 动态方法  
-    - `hasOwnProperty()`  
-      (在上面的 '检查' 中讲过)
-      

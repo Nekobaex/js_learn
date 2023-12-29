@@ -3,7 +3,9 @@
 > 完成数组后, 回过头来完成 String
 字符串, 原理类似数组, 但不直接继承自数组.
 
-
+字符串拆分合并
+string.split(separator)
+array.join(separator)
 
 常用属性和方法
   - `String`
