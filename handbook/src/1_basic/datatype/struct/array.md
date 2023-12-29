@@ -65,7 +65,9 @@
   ```
 - 更改  
   与对象类似, 和读取同理, 直接赋值修改.
-  但 `array.at(index)` 是只读的方法, 不能更改值, 只能通过方括号运算符(`[]`)更改值.
+  但 `array.at(index)` 是只读的方法, 不能更改值, 只能通过方括号运算符(`[]`)更改值.  
+
+  `with(index, value)` 改变数组的某个元素并返回, 但不改变原数组
 
   数组自带了类似栈和队列的操作方法: `push(), pop(), shift(), unshift()`, 其中 `shift(), unshift()` 由于是在开头增减元素, 会导致所有元素坐标整体的改变, 所以性能较差.
   ```js
@@ -75,6 +77,8 @@
     // foo.at(2) = true  // 报错
     console.log(foo);
     // 输出: ['a', 666, 'c']
+
+    // with
 
     // 栈和队列 (会改变原数组)
     let result1 = foo.pop()         // 移除了末尾的 'c', 存放到 result1 中
@@ -151,30 +155,26 @@
   `array.every((item) => {})`, 内部全部为 `true`, 则外部返回 `true`, 否则返回 `false`.  
 - 排序  
   `array.sort((left, right) => {})`,  
-  内部返回 1 表示左侧应向右排, 返回 0 表示同等次序, 返回 -1 表示左侧应向左排,  
-  会改变调用的数组 `array`.
+  内部返回 1 表示左侧应向右排, 返回 0 表示同等次序, 返回 -1 表示左侧应向左排, 改变原数组.  
+
+  `toSorted((left, right) => {})`  排序, 不改变原数组.
 
 - 其他  
-  翻转数组: `array.reverse()`, 会改变调用的数组 `array`.
+  翻转数组: `array.reverse()`, 改变原数组.
 
-- 其他属性和方法
+## 其他属性和方法
 - Array
   - 动态属性
     - `length` 数组的长度
   - 静态方法
-    - `isArray()`
+    - `isArray(value)`
   - 动态方法
     - `keys()`
     - `values()`
     - `entries()` 
     - 
-    - `fill()`
-    - `flat()`
-    - `flatMap()`
-    - `join()`
-    - `reverse()`
-    - `splice()`
-    - `toReversed()`
-    - `toSorted()`
-    - `toSpliced()`
-    - `with()`
+    - `fill()`  填充, 且改变原数组
+    - `flat(depth)` 打平数组
+    - `join(separator)`  将数组元素合并为字符串
+    - `reverse()` 翻转, 且改变原数组
+    - `toReversed()` 翻转, 不改变原数组.
