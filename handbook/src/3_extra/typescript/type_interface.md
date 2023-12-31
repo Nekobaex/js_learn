@@ -1,1 +1,1 @@
-# `type 和 interface`
+# type 和 interface

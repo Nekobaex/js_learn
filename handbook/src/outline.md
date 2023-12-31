@@ -21,7 +21,7 @@
       - [x] `Number`
       - [x] `BigInt`
       - [x] `Boolean`
-      - [ ] `String`
+      - [+] `String`
       - [ ] `Symbol`
       - [ ] `undefined`
       - [ ] `null`
@@ -72,8 +72,29 @@
     - [ ] `??=`
     - [ ] `?.`
   - [ ] 网络请求
-- [ ] 拓展
-  - [ ] `TypeScript`
+- [+] 拓展
+  - [+] `TypeScript`
+    - [+] `tsconfig.json`
+    - [ ] 基础类型介绍
+      - [ ] 基本类型 与包装类型
+      - [ ] 值类型
+      - [ ] `unknown 与 any`
+    - [ ] `type 与 interface`
+    - [ ] 复合类型
+      - [ ] `Object 与 object`
+      - [ ] 联合类型与交叉类型
+      - [ ] 数组与元组
+      - [ ] 枚举
+      - [ ] 函数类型
+      - [ ] `never, void 与 undefined`
+      - [ ] 类
+    - [ ] `Typescript` 深入
+      - [ ] 类型断言
+      - [ ] 模块
+      - [ ] 命名空间
+      - [ ] 装饰器
+      - [ ] `declare`
+      - [ ] `d.ts`
   - [ ] 模块与包管理
   - [ ] 代码规范
   - [ ] 跨平台
@@ -95,8 +116,8 @@
   - [ ] 算法与数据结构
   - [ ] 设计模式
   - [ ] 常用架构
-- [ ] 库
-  - [ ] `React`
+- [+] 库
+  - [+] `React`
   - [ ] `Electron`
 - [ ] 实践
   - [ ] 命令行工具
