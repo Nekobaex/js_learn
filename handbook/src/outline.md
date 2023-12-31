@@ -25,11 +25,11 @@
       - [ ] `Symbol`
       - [ ] `undefined`
       - [ ] `null`
-    - [+] 结构
+    - [x] 结构
       - [x] `Object`
-      - [+] `Array`
-      - [ ] `Map, WeakMap`
-      - [ ] `Set, WeakSet`
+      - [x] `Array`
+      - [x] `Map, WeakMap`
+      - [x] `Set, WeakSet`
     - [ ] 二进制
       - [ ] `ArrayBuffer`
       - [ ] `Blob`
@@ -58,12 +58,12 @@
   - [ ] 原型
   - [ ] 类
   - [ ] 错误处理
-  - [ ] 代理
-  - [ ] 异步
-  - [ ] 装饰器
   - [ ] 生成器
   - [ ] 迭代器
   - [ ] 定时器
+  - [ ] 异步
+  - [ ] 流
+  - [ ] 代理
   - [ ] 正则表达式
   - [ ] 空类型
     - [ ] `undefined`
