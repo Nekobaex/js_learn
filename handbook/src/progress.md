@@ -35,5 +35,5 @@
 ## 2023/12/31
 - [+] 基础
     - [+] 结构
-      - [+] `Map, WeakMap`
-      - [+] `Set, WeakSet`
+      - [x] `Map, WeakMap`
+      - [x] `Set, WeakSet`
