@@ -228,7 +228,7 @@ let a = new Object();
       ```
     - `values(object)` 提取 `value`, 和 `keys()` 同理
     - `entries(object)` 提取 `[key, value]`,  和 `keys()` 同理
-    - `.fromEntries(entries)` 从对象或映射的 `entries` 创建对象
+    - `.fromEntries(entries)` 从其他对象的 `entries` 创建对象
     - 
     - `is(value1, value2)`  
       用来静态地判断两个值是否相等,  

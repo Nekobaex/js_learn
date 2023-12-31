@@ -4,7 +4,7 @@
 // 空 Map
 let bar = new Map();
 
-// 以对象或映射的 .entries() 结果作为参数
+// 以其他对象的 .entries() 结果作为参数
 let foo = new Map([
   ['a', 1],
   ['b', 2],
@@ -29,6 +29,7 @@ console.log(foo);
     - `map.delete(key)` 通过 `key` 删除元素
 - 遍历  
   - `map.forEach((item, key, map) => {})` 遍历, 使用方法和 `Array` 类似
+  - `for of` 相当于使用 `map.entries()` 后进行 `for of`
 ## 属性和方法
 - `Map`
     - `keys()`
