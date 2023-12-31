@@ -25,6 +25,15 @@
 - [解构](./1_basic/destruct.md)
 
 ---
+# 拓展
+- [TypeScript](./3_extra/typescript.md)
+  - [tsconfig.json](./3_extra/typescript/tsconfig_json.md)  
+  - [基础类型介绍](./3_extra/typescript/basic_type.md)
+  - [type 和 interface](./3_extra/typescript/type_interface.md)
+  - [复合类型](./3_extra/typescript/complex_type.md)
+  - [TypeScript 深入]()
+
+---
 # 第三方库
 - [React](./4_lib/react.md)
 
